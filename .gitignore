@@ -1,0 +1,5 @@
+/.env
+/flaskapp.py
+/output.txt
+/webservhost2.py
+/__pycache__
