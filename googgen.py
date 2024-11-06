@@ -28,11 +28,11 @@ class recipeWriter:
         The input will be formatted as natural text or as a list, and the job of the API is to successfully parse it.
         The only output should be the completed recipe or error embedded in html tags. do not include ```html.''')
         input:{
-        """
+        """ 
+        #Context data for prompt interpretation and parsing
         
     
-    def generate(self,text):
-        # Change this to alter the output
+    def generate(self,text): #Combines context and instructions, and cleans any common formatting problems
         ingredients=text
         response = self.model.generate_content(self.contextdata+ingredients) 
         responsetext=response.text
@@ -46,6 +46,8 @@ class recipeWriter:
 
 
 writer=recipeWriter()
+
+#adjust the timeout and termination keyword here
 ingredients=texthandler.voiceRecognise(timeout=10,stopword='stop')
 print(ingredients)
 writer.generate(text=ingredients)
