@@ -1,4 +1,3 @@
-#Web server hosting script
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import subprocess
@@ -10,7 +9,6 @@ class MyHandler(BaseHTTPRequestHandler):
             text_content = "".join(file.readlines())  # The content to dynamically update
             file.close()
         except:
-            #Default text while loading the dynamic content
             text_content = "<h1>Initialising...</h1>"
 
         if self.path == "/content":
@@ -21,7 +19,7 @@ class MyHandler(BaseHTTPRequestHandler):
             self.wfile.write(bytes(json.dumps(response), "utf-8"))
         elif self.path == "/run-script":
             # Run the external Python script
-            subprocess.Popen(['python', 'V:\\test\\googrecipegen\\googgen.py'])
+            subprocess.Popen(['python', 'main.py'])
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b'Listening...')
@@ -29,10 +27,15 @@ class MyHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/html")
             self.end_headers()
-            #Write the output to the Web page
             self.wfile.write(bytes(
                 "<html>"
                 "<head>"
+                "<style>"
+                "body { font-family: Arial, sans-serif; background-color: #f0f0f5; margin: 0; padding: 20px; }"
+                "#dynamic-html { background: #ffffff; border-radius: 10px; padding: 20px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }"
+                "button { background-color: #4CAF50; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; }"
+                "button:hover { background-color: #45a049; }"
+                "</style>"
                 "<script>"
                 "async function fetchContent() {"
                 "const response = await fetch('/content');"

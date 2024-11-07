@@ -2,11 +2,6 @@
 import google.generativeai as genai
 from dotenv import load_dotenv
 import os
-
-from VTT import voiceToText
-
-texthandler=voiceToText()
-
 class recipeWriter:
     def __init__(self):
         load_dotenv()
@@ -14,10 +9,10 @@ class recipeWriter:
         self.model = genai.GenerativeModel("gemini-1.5-flash") #Initialise the Gemini model
         self.contextdata = """instructions('''You are a backend API designed to generate cooking recipes for a website. The workflow is as such: 
         Reject any input that is not possible to create a recipe from. Return an error specifying that an invalid input was recieved, formatted correctly:
-        header: "INSTRUCTIONS:"
-        subheader: "Please provide a list of ingredients from which to generate a recipe." 
-        text: "You may also include:"
-        list: "steps you would like to see, quantities, number of servings, serving suggestions"
+        error header: "INSTRUCTIONS:"
+        error subheader: "Please provide a list of ingredients from which to generate a recipe." 
+        error text: "You may also include:"
+        error list: "steps you would like to see, quantities, number of servings, serving suggestions"
         Your inputs are ingredients used, the quantities they are used in,and the name of the dish.
         Your outputs are a step-by-step recipe to make the dish using only the ingredients stated in the quantities given..
         The recipe should have an ingredient list, stating each ingredient, how it should be prepared, and what quantity.
@@ -45,10 +40,5 @@ class recipeWriter:
 
 
 
-writer=recipeWriter()
 
-#adjust the timeout and termination keyword here
-ingredients=texthandler.voiceRecognise(timeout=10,stopword='stop')
-print(ingredients)
-writer.generate(text=ingredients)
 
