@@ -1,8 +1,10 @@
+const path = document.getElementById('data-container').getAttribute('host-path');
+console.log(path)
 document.getElementById('generateButton').addEventListener('click', async () => {
     const inputText = document.getElementById('inputField').value;
     
     try {
-        const response = await fetch('https://192.168.1.207:8080/generate', {
+        const response = await fetch(path, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
