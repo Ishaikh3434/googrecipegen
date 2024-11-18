@@ -37,6 +37,7 @@ class recipeWriter:
         file.write(responsetext)
         file.close()
         print(os.path.abspath(os.curdir))
+        return(responsetext)
 
 
 

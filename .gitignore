@@ -1,5 +1,5 @@
 /.env
-/flaskapp.py
+/certificate.crt
+/private.key
 /output.txt
-/webservhost2.py
 /__pycache__
