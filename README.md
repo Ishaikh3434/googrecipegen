@@ -1,10 +1,24 @@
-A tool to automate the process of noting down recipes using Google Gemini and vosk voice recognition!
-Currently still in development, with basic functionality constrained to running locally.
-Requires a Google Gemini API key, save it to .env (API_KEY=YOUR_API_KEY)
+**REWORKED FROM PREALPHA!**
+
+A tool to automate the process of noting down recipes using Google Gemini!
+Currently still in development, with basic functionality fully operational
+
 
 Project breakdown:
 Core functions are to take a voice input consisting of name of dish, ingredients, as well as optional serving suggestions, number of servings, quantities.
 Runs a local web server to display the output formatted as a step-by-step recipe.
+
+Setup:
+Requirements: 
+.env file containing the following:
+  -Google Gemini API key
+  -Self-Generated Session Key
+  -Host IP
+  -Host Port
+SSL certificate and key (.crt and .key, respectively)
+
+Ensure that the .env is in the project root, and have the paths to the certificate and key handy to add them to the code (default is in project root, adjust as needed)
+
 
 Features planned:
 -Save feature allowing generated recipes to be collected
