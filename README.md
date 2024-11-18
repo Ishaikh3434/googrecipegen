@@ -6,7 +6,4 @@ Project breakdown:
 Core functions are to take a voice input consisting of name of dish, ingredients, as well as optional serving suggestions, number of servings, quantities.
 Runs a local web server to display the output formatted as a step-by-step recipe.
 
-Features planned:
--Save feature allowing generated recipes to be collected
--Editable recipe, rather than statically displayed
--More robust voice recognition/instruction parsing
+Alpha Version runs entirely serverside, including microphone input. This build was more proof-of-concept than working project, and has since been depreciated.
