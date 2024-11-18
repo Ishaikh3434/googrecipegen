@@ -7,18 +7,18 @@ from dotenv import load_dotenv
 from googgen import recipeWriter
 import uuid
 load_dotenv()
-hostdata={'certificate':'certificate.crt',
-            'key':'private.key',
+hostdata={'certificate':'certificate.crt', #SSL certificate path
+            'key':'private.key', #SSL private key path
             'host':os.environ["HOST_IP"],
             'port':os.environ["HOST_PORT"]}
-hostname=f"https://{hostdata['host']}:{hostdata['port']}/generate"
+hostname=f"https://{hostdata['host']}:{hostdata['port']}/generate" #Composite the path to the server using provided host ip and port
 app = Flask(__name__)
-writer=recipeWriter()
-app.secret_key=os.environ["SESSION_KEY"]
+writer=recipeWriter() #initialise Gemini recipe generator
+app.secret_key=os.environ["SESSION_KEY"] 
 # Serve the HTML page
 @app.route('/')
 def index():
-    return render_template('index.html',path=hostname)
+    return render_template('index.html',path=hostname) #pass the composited host path to the frontend
 
 @app.route('/generate', methods=['POST'])
 def generate():
@@ -29,7 +29,6 @@ def generate():
     return jsonify({'outputText': session['outputText']})
 
 if __name__ == '__main__':
-    context = ('certificate.crt', 'private.key')  # Path to your SSL certificate and key
 
     context=(hostdata['certificate'],hostdata['key'])
     app.run(host=hostdata['host'],port=hostdata['port'], ssl_context=context)
