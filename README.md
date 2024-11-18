@@ -18,7 +18,7 @@ Requirements:
 SSL certificate and key (.crt and .key, respectively)
 
 Ensure that the .env is in the project root, and have the paths to the certificate and key handy to add them to the code (default is in project root, adjust as needed)
-
+A sample env file is included, just replace the fields with the info as required, and rename it from sample.env -> .env (blank name)
 
 Features planned:
 -Save feature allowing generated recipes to be collected
