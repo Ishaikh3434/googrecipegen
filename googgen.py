@@ -29,7 +29,9 @@ class recipeWriter:
     
     def generate(self,text): #Combines context and instructions, and cleans any common formatting problems
         ingredients=text
-        response = self.model.generate_content(self.contextdata+ingredients) 
+        print("Debug: Data processing...")
+        response = self.model.generate_content(self.contextdata+ingredients)
+        print("Done!") 
         responsetext=response.text
         responsetext=responsetext.replace("```html","")
         responsetext=responsetext.replace("```","")
