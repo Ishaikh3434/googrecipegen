@@ -35,4 +35,4 @@ def generate():
 if __name__ == '__main__':
 
     context=(hostdata['certificate'],hostdata['key'])
-    app.run(host=hostdata['host'],port=hostdata['port'], ssl_context=context,debug=True)
+    app.run(host=hostdata['host'],port=hostdata['port'], ssl_context=context)

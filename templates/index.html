@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web App</title>
+    <title>Qook</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
+<header>
+    <h2>Recipe Generator</h2>
+</header>
 <body>
-    <h2>Input Form</h2>
-    <input type="text" id="inputField" placeholder="Type something...">
-    <button id="generateButton">Generate</button>
-    <button id="micButton">🎤 Use Microphone</button>
+    <div class="input-container">
+        <input type="text" id="inputField" placeholder="Type some ingredients...">
+        <button id="micButton" class="off">🎤</button>
+    </div>
+
+    <button id="generateButton" class="styled-button">Generate</button>    
     <div id="outputContainer"></div>
     <div id="data-container" host-path="{{path}}"></div>
     <script src="/static/js/app.js"></script>
