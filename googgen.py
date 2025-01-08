@@ -21,7 +21,7 @@ class recipeWriter:
         Ingredients list should go first, and ingredients for a subsection should be grouped.
         Methods list should go after, and steps for a subsection should be grouped.
         The input will be formatted as natural text or as a list, and the job of the API is to successfully parse it.
-        The only output should be the completed recipe or error embedded in html tags. do not include ```html.''')
+        The only output should be the completed recipe or error embedded in html tags, but header tags should be avoided. do not include ```html.''')
         input:{
         """ 
         #Context data for prompt interpretation and parsing
