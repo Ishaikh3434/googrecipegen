@@ -32,6 +32,8 @@ def generate():
     print(f"Data processed in {time.time()-startime}s")
     return jsonify({'outputText': session['outputText']})
 
+
+
 if __name__ == '__main__':
 
     context=(hostdata['certificate'],hostdata['key'])

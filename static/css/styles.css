@@ -1,4 +1,15 @@
 /* General styles */
+canvas#canvas {
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:-1;
+    display: block;
+    background: #000;
+    overflow-x: hidden;
+    filter:blur(3px)
+    
+  }
 header {
     font-family:'Courier New', Courier, monospace;
     font-size: 10%;
@@ -10,13 +21,14 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #f8f2f8, #eae0f1);
+    background: #000;
     color: #4d4d4d;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -28,14 +40,19 @@ h1 {
 }
 
 h2 {
-    font-size: 1.8rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px; 
+    padding: 10px; /* Padding for spacing */
+    font-size: 2.8rem;
     margin-bottom: 20px;
     color: #5c4c86;
+    filter:blur(0.5px)
 }
 
 /* Container for input field and mic button */
 .input-container {
     display: flex;
+    opacity: 0.5;
     align-items: center;
     width: 80%; /* Match output container width */
     max-width: 612px; /* Same max-width as output container */
@@ -98,6 +115,7 @@ input[type="text"] {
     margin-bottom: 20px;
     padding: 20px;
     background: #fff8ef;
+    /*opacity: 1;*/
     border: 1px dashed #443863;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
