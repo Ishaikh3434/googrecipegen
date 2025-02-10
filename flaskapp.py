@@ -5,7 +5,7 @@ import ssl
 import os
 import time
 from dotenv import load_dotenv
-from googgen import recipeWriter
+from lib.googgen import recipeWriter
 import uuid
 load_dotenv()
 hostdata={'certificate':'certificate.crt', #SSL certificate path
