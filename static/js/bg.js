@@ -1,5 +1,5 @@
 /*
-BACKGROUND
+BACKGROUND SCRIPT
 */
 
 (function () {

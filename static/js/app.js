@@ -1,3 +1,7 @@
+
+/*
+LOGIC SCRIPT
+*/
 const path = document.getElementById('data-container').getAttribute('host-path');
 const togglebutton = document.getElementById('micButton');
 const saveOptions = document.getElementById('saveOptions');
