@@ -1,34 +1,67 @@
 <!-- HTML Frontend (index.html) -->
 <!DOCTYPE html>
-<html lang="en"> 
-    
+<html lang="en">
+<script>
+    // Array of food-related emojis
+    const foodEmojis = [
+        "🍕", "🍔", "🍣", "🍜", "🍦", "🍩", "🍪", "🥗", "🍉", "🍓", "🍊", "🍇", "🥑", "🍒", "🍪"
+    ];
+
+    // Function to set the favicon
+    function setFavicon(emoji) {
+        const link = document.querySelector("link[rel='icon']") || document.createElement('link');
+        link.rel = 'icon';
+        link.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><text x="0" y="14" font-size="14">${encodeURIComponent(emoji)}</text></svg>`;
+        document.head.appendChild(link);
+    }
+
+    // Pick a random emoji and set the favicon
+    const randomEmoji = foodEmojis[Math.floor(Math.random() * foodEmojis.length)];
+    setFavicon(randomEmoji);
+    // Set the emoji inside the righttext tag
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const buttonElement = document.querySelector('.header button');
+        if (buttonElement) {
+            buttonElement.innerHTML = randomEmoji;  // Insert the emoji
+        }
+    });
+</script>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2619788706976082"
+     crossorigin="anonymous"></script>
 
+
+    <canvas id="canvas">Canvas not supported.</canvas>
 
     <title>Qook</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+
 </head>
+<div class = 'header'> <text>Qook - Generative AI Recipe Writer</text>
+ <div id='buttonspacer'></div><button id="emojiButton"></button>
+</div>
 <header>
     <h2>Recipe Generator</h2>
 </header>
-<body>
+<body {margin:0}>
     <div class="input-container">
         <input type="text" id="inputField" placeholder="Type some ingredients...">
         <button id="micButton" class="off">🎤</button>
     </div>
 
-    <button id="generateButton" class="styled-button">Generate</button>    
+    <button id="generateButton" class="styled-button">Generate</button>
     <div id="outputContainer" class="'outputContainer" contenteditable="true">
         <h1>How does this work?</h1>
-        <body>Writing recipes can be really dull, so this tool was made to streamline the process, so you can focus on making and sharing good food.
-            Just type what you're making, the ingredients you used, and optionally some rough steps on how to make the dish, or press the mic button and say it aloud.
-            And voila, a beautifully formatted recipe you can save, share and make time and time again!</body>
-        
+        <body>Writing recipes can be really dull, so this tool was made to streamline the process, so you can focus on making and sharing good food.</body><br>
+        <body>To get the best results, start with the name of the recipe, then include ingredients (and optionally how much of each) you're using to make the dish, and some rough steps (don't worry, the final result is editable!)
+        </body><br>
+        <body>Then, hit generate, and you should be met with a pro-looking recipe that you can save and share!</body>
+
     </div>
     <div id="saveOptions"  style="display:none;">
         <button id="btn" class="styled-button"> Save Recipe </button>
@@ -42,13 +75,14 @@
                 doc.save("recipe.pdf");
             });
         </script>
-        <div id="saveToDrive"></div>
     </div>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
     <div id="data-container" host-path="{{path}}"></div>
-    <script src="/static/js/app.js"></script>
     <script src="/static/js/bg.js"></script>
-    <canvas id="canvas">Canvas not supported.</canvas>  
+    <script src="/static/js/app.js"></script>
+
+
+
 </body>
+<div class= 'footer'><text>Made by Idris Shaikh</text></div>
 </html>

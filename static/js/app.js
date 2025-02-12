@@ -3,6 +3,8 @@ const togglebutton = document.getElementById('micButton');
 const saveOptions = document.getElementById('saveOptions');
 console.log(path);
 
+
+
 document.getElementById('generateButton').addEventListener('click', async () => {
     const inputText = document.getElementById('inputField').value;
 
@@ -20,35 +22,15 @@ document.getElementById('generateButton').addEventListener('click', async () => 
         outputContainer.innerHTML = data.outputText;
 
         // Add Save options once content is generated
-        console.log("this should display");
+        console.log("hwhatya lookin at?");
         saveOptions.style.display="inline"
     } catch (error) {
         console.error('Error:', error);
     }
-    
+
 });
-    // Initialize Save to Google Drive functionality
-    initGoogleDriveSave();
 
 
-
-
-// Initialize Google Drive Save button
-function initGoogleDriveSave() {
-    const saveToDriveDiv = document.getElementById('saveToDrive');
-    saveToDriveDiv.innerHTML = ''; // Clear any existing buttons
-
-    const publicBlobURL = createBlobURL();
-    saveToDriveDiv.innerHTML = `
-        <div class="g-savetodrive"
-            data-src="${publicBlobURL}"
-            data-filename="recipe.pdf"
-            data-sitename="Qook">
-        </div>`;
-    if (window.gapi && gapi.savetodrive) {
-        gapi.savetodrive.render(saveToDriveDiv); // Render the Drive button
-    }
-}
 
 // Create a Blob URL for the recipe content
 function createBlobURL() {

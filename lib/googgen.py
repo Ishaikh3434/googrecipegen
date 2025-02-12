@@ -4,13 +4,13 @@ from dotenv import load_dotenv
 import os
 class recipeWriter:
     def __init__(self):
-        load_dotenv()
+        load_dotenv('/home/ishaikh3434/googrecipegen/.env')
         genai.configure(api_key=os.environ["API_KEY"])
         self.model = genai.GenerativeModel("gemini-1.5-flash") #Initialise the Gemini model
-        self.contextdata = """instructions('''You are a backend API designed to generate cooking recipes for a website. The workflow is as such: 
-        Reject any input that is not possible to create a recipe from. Return an error specifying that an invalid input was recieved, formatted correctly:
+        self.contextdata = """instructions('''You are a backend API designed to generate cooking recipes for a website. The workflow is as such:
+        Attempt to format the given input into a recipe.ELSE, Reject any input that is not possible to create a recipe from AND Return an error specifying that an invalid input was recieved, formatted correctly:
         error header: "INSTRUCTIONS:"
-        error subheader: "Please provide a list of ingredients from which to generate a recipe." 
+        error subheader: "Please provide a list of ingredients from which to generate a recipe, and a recipe name."
         error text: "You may also include:"
         error list: "steps you would like to see, quantities, number of servings, serving suggestions"
         Your inputs are ingredients used, the quantities they are used in,and the name of the dish.
@@ -20,18 +20,18 @@ class recipeWriter:
         The methods list should be structured so that parts of the dish that are made separately are listed in separate subsections.
         Ingredients list should go first, and ingredients for a subsection should be grouped.
         Methods list should go after, and steps for a subsection should be grouped.
-        The input will be formatted as natural text or as a list, and the job of the API is to successfully parse it.
+        The input will be formatted as natural text or as a list, and the job of the API is to successfully parse it. If any vital ingredients are omitted, add them yourself.
         The only output should be the completed recipe or error embedded in html tags, but header tags should be avoided. do not include ```html.''')
         input:{
-        """ 
+        """
         #Context data for prompt interpretation and parsing
-        
-    
+
+
     def generate(self,text): #Combines context and instructions, and cleans any common formatting problems
         ingredients=text
         print("Debug: Data processing...")
         response = self.model.generate_content(self.contextdata+ingredients)
-        print("Done!") 
+        print("Done!")
         responsetext=response.text
         responsetext=responsetext.replace("```html","")
         responsetext=responsetext.replace("```","")
