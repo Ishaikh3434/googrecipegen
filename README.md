@@ -1,4 +1,5 @@
-**REWORKED FROM PREALPHA!**
+**NOW AVAILIBLE ON THE WEB!**
+This is the local-hostable version of my Gemini Recipe Generator!
 
 A tool to automate the process of noting down recipes using Google Gemini!
 Currently still in development, with basic functionality fully operational
