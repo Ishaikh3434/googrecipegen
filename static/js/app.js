@@ -63,7 +63,7 @@ togglebutton.addEventListener('click', () => {
 
         recognition.onresult = (event) => {
             var speechResult = event.results[event.results.length-1][0].transcript;
-            document.getElementById('inputField').value += speechResult;
+            document.getElementById('inputField').value += speechResult+" ";
             speechResult = ''
         };
 
