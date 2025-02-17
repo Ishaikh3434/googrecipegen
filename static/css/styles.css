@@ -50,25 +50,55 @@ h2 {
 }
 
 /* Container for input field and mic button */
+.textfield-container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: left;
+    width: 100%;
+    max-width: 612px;
+
+}
+
 .input-container {
     display: flex;
-    opacity: 0.5;
-    align-items: center;
-    width: 80%; /* Match output container width */
-    max-width: 612px; /* Same max-width as output container */
+    align-self: center;
+    align-items: left;
+    width: 100%;
+    max-width: 612px;
     margin-bottom: 10px;
 }
 
-/* Input field */
+
+
 input[type="text"] {
-    flex: 1; /* Take up remaining space */
+    display:inline;
+    align-items: left;
+    width: 100%;
+    max-width: 612px;
     padding: 10px;
-    border: 1px solid #cbbcd9;
-    border-radius: 8px 0 0 8px; /* Rounded corners on the left */
+    border: 1px solid var(--primary);
+    border-radius:  8px 0 0 0;
     font-size: 1rem;
+    font-family:'Courier New', Courier, monospace;
     outline: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+
+/* Input field */
+textarea[type="text"] {
+    flex: 1;
+    width:100%;
+    border: 1px solid var(--primary);
+    border-radius: 0px 0 0 8px;
+    font-size: 1rem;
+    outline: none;
+    padding: 10px;
+    font-family:'Courier New', Courier, monospace;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Microphone button */
 #micButton {
@@ -80,7 +110,7 @@ input[type="text"] {
     font-size: 1.2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
 }
 
 #micButton:hover {
