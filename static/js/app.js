@@ -1,7 +1,3 @@
-
-/*
-LOGIC SCRIPT
-*/
 const path = document.getElementById('data-container').getAttribute('host-path');
 const togglebutton = document.getElementById('micButton');
 const saveOptions = document.getElementById('saveOptions');
@@ -10,7 +6,7 @@ console.log(path);
 
 
 document.getElementById('generateButton').addEventListener('click', async () => {
-    const inputText = document.getElementById('inputField').value;
+    const inputText = (document.getElementById('recipeName').value+': '+document.getElementById('inputField').value);
 
     try {
         const response = await fetch(path, {
@@ -56,7 +52,7 @@ togglebutton.addEventListener('click', () => {
     if (!recognition) {
         recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.lang = 'en-US';
-        recognition.interimResults = true; // Allow interim results
+        recognition.interimResults = false; // Allow interim results
         recognition.maxAlternatives = 1;
         recognition.continuous = true; // Keep recognition active after pauses
 
@@ -66,9 +62,9 @@ togglebutton.addEventListener('click', () => {
         };
 
         recognition.onresult = (event) => {
-            const speechResult = event.results[0][0].transcript;
-            document.getElementById('inputField').value = speechResult;
-            console.log(speechResult);
+            var speechResult = event.results[event.results.length-1][0].transcript;
+            document.getElementById('inputField').value += speechResult;
+            speechResult = ''
         };
 
         recognition.onerror = (event) => {
